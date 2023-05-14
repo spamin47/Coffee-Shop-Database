@@ -65,3 +65,13 @@ def execute_queries(connection,query):
     except Error as err:
         print(f"Error: '{err}'")
 
+#Execute select queries
+def read_query(connection,query:str):
+    cursor = connection.cursor()
+    result = None
+    try:
+        cursor.execute(query)
+        result = cursor.fetchall() #return all the results in the table
+        return result
+    except Error as err:
+        print(f"Error: '{err}'")

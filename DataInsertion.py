@@ -78,6 +78,58 @@ insert into Product(Product_name,Product_description,Price,Availability,Recipe_i
 2.50,True,9)
 ;
 """
+#insert query for Ingredients
+insert_query = """
+insert into Ingredients(Ingredient_name,Unit_price) values
+("coffee bean bag",1.50),
+("coffee creamer",0.01),
+("Whipped cream",1.00),
+("espresso shot", 1.00),
+("cocoa powder bag", 2.00),
+("whole milk (gal)", 2.00),
+("2% milk/gal (gal)", 2.00),
+("low fat milk (gal)", 2.00),
+("chocolate box", 3.00),
+("sugar packet",0.01);
+"""
 
+#insert query for Staff
+insert_query = """
+insert into Staff(Schedule_id,First_name,Last_name,Email,Phone,Job_title) values
+(1,"Kevin","Chad","k873492@gmail.com","4085447779","Employee"),
+(2,"Dan","Le","dandog@gmail.com","4085469779","Employee"),
+(3,"Kog","Big","bbdacog@gmail.com","4090469779","Janitor"),
+(3,"Holly","Steward","whiteffdsa@gmail.com","4080468889","Cashier"),
+(1,"Mary","Garcia","dfadsmexdkjaf@gmail.com","4090400079","Manager"),
+(2,"Heather","Big","bbdacog@gmail.com","4090469779","Janitor"),
+(3,"Showee","Small","bshawdee@gmail.com","4080469999","Barista")
+"""
+
+#insert query for inventory
+insert_query = """
+insert into inventory(Location,Quantity,Product_id) values
+("ShelfA",10,1),
+("ShelfB",10,50),
+("ShelfC",5,51),
+("FridgeA",4,52),
+("FridgeB",5,53),
+("FridgeC",6,54),
+("FridgeA",7,55),
+("FridgeA",2,56)
+"""
+
+#inesrt query for orders
+insert_query = """
+insert into Orders(Order_date,Total_price,Quantity,Payment_method,Customer_id,Product_id) values
+("2022-10-20",8,2,"cash",2,1),
+("2022-10-21",4,2,"apple pay",1,51),
+("2022-11-22",9,2,"card",3,51),
+("2022-10-21",8,2,"cash",4,1),
+("2022-12-19",10,2,"apple pay",5,56),
+("2022-11-21",8,2,"card",6,54),
+("2022-10-23",5,2,"cash",2,1),
+("2022-10-22",8,2,"cash",1,53),
+("2022-01-21",11,2,"card",3,55)
+"""
 
 DBManager.execute_query(db_connection,insert_query)

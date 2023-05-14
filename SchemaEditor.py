@@ -109,17 +109,20 @@ foreign key (Product_id) REFERENCES Product(Product_id)
 
 
 # #custom query
-# query = """
-# create table Supplier(
-# Supplier_id int not null auto_increment,
-# Supplier_name varchar(20) not null,
-# Contact_name varchar(20) not null,
-# Address varchar(50) not null,
-# Email varchar(30) not null,
-# Phone varchar(12) not null,
-# primary key (Supplier_id)
-# );
-# """
-# DBManager.execute_queries(db_connection,query)
+query = """
+create table Orders(
+Order_id int not null auto_increment,
+Order_date date not null,
+Total_price double not null,
+Quantity int not null,
+Payment_method varchar(10) not null,
+Customer_id int not null,
+Product_id int not null,
+PRIMARY key (Order_id),
+foreign key (customer_id) REFERENCES Customers(customer_id),
+foreign key (Product_id) REFERENCES Product(Product_id)
+);
+"""
+DBManager.execute_queries(db_connection,query)
 
-# connection.close()
+connection.close()
