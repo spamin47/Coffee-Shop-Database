@@ -24,6 +24,7 @@ def create_database(connection, query):
         cursor.execute(query)
         print("Database created successfully")
     except Error as err:
+        print("Could not create db")
         print(f"Error: '{err}'")
 
 

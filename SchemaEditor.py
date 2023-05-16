@@ -1,16 +1,17 @@
 import DBManager
 
 #MySQL terminal password
-password = "4725"
-user = "root"
-connection  = DBManager.create_server_connection("localhost",user,password)
+password = "1e9ee14d"
+user = "b514d772424d00"
+hostname = "us-cdbr-east-06.cleardb.net"
+connection  = DBManager.create_server_connection(hostname,user,password)
 
 #Query for creating database
-db = "Coffee_shop"#Database name
-create_database_query = "Create database " + db
-DBManager.create_database(connection,create_database_query)
+db = "heroku_72ec536ef27fac4"#Database name
+# create_database_query = "Create database " + db
+# DBManager.create_database(connection,create_database_query)
 
-db_connection = DBManager.create_db_connection("localhost",user,password,db_name=db)
+db_connection = DBManager.create_db_connection(hostname,user,password,db_name=db)
 
 #Drop tables if exist
 drop_table_query = """
@@ -75,7 +76,7 @@ Schedule_id int not null,
 First_name varchar(10) not null,
 Last_name varchar(10) not null,
 Email varchar(30) not null,
-Phone int not null,
+Phone varchar(12) not null,
 Job_title varchar(10) not null,
 primary key (Staff_id),
 foreign key(Schedule_id) REFERENCES Schedule(Schedule_id)
@@ -123,6 +124,6 @@ foreign key (customer_id) REFERENCES Customers(customer_id),
 foreign key (Product_id) REFERENCES Product(Product_id)
 );
 """
-DBManager.execute_queries(db_connection,query)
+DBManager.execute_queries(db_connection,create_table_query)
 
 connection.close()

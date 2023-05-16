@@ -1,11 +1,14 @@
 import DBManager
 
 #MySQL terminal password
-password = "4725"
-user = "root"
-#DB properties
-db = "Coffee_shop" #Database name
-db_connection = DBManager.create_db_connection("localhost",user,password,db_name=db)
+password = "1e9ee14d"
+user = "b514d772424d00"
+hostname = "us-cdbr-east-06.cleardb.net"
+connection  = DBManager.create_server_connection(hostname,user,password)
+#Connect database
+db = "heroku_72ec536ef27fac4"#Database name
+
+db_connection = DBManager.create_db_connection(hostname,user,password,db_name=db)
 
 #insert query for Customers
 insert_query = """
@@ -34,7 +37,6 @@ insert into Recipe(Recipe_name,Recipe_description) values
 ("Iced Coffee","Ratio: 2 oz. drip coffee or espresso + 4 oz. of ice + 4-6 oz of milk or water + flavoring syrup to taste, Cup: 14 oz. Mixing Glass");
 
 """
-
 #insert query for Schedule
 insert_query = """
 insert into Schedule(Description) values
@@ -56,26 +58,25 @@ insert into Supplier(Supplier_name,Contact_name,Address,Email,Phone) values
 ("CupCompany","Cupper Co","1241 Coolio Dr. San Jose CA","Cupman@gmail.com","4082242785"),
 ("Beverage Toxic","Joshy Cok","1241 Coooolest Dr. San Jose CA","JossM@gmail.com","4081112345");
 """
-
 #insert query for Product
 insert_query = """
 insert into Product(Product_name,Product_description,Price,Availability,Recipe_id) values
 ("Double Espresso","A double espresso may also be listed as doppio, which is the Italian word for double. This drink is highly concentrated and strong.",
-5.00,True,2),
+5.00,True,14),
 ("Red Eye","The red eye's purpose is to add a boost of caffeine to your standard cup of coffee.",
-6.00,True,3),
+6.00,True,24),
 ("Americano","Soldiers would add water to their coffee to extend their rations farther. The water dilutes the espresso while still maintaining a high level of caffeine.",
-7.00,True,4),
+7.00,True,34),
 ("Macchiato","Flavoring syrups are often added to the drink according to customer preference.",
-8.00,True,5),
+8.00,True,44),
 ("Cappuccino","This creamy coffee drink is usually consumed at breakfast time in Italy and is loved in the United States as well. Thick foam layer and additional flavorings that can be added to it.",
-5.00,True,6),
+5.00,True,54),
 ("Cafe Latte","Cafe lattes are considered an introductory coffee drink since the acidity and bitterness of coffee are cut by the amount of milk in the beverage.",
-4.50,True,7),
+4.50,True,64),
 ("Mocha"," The chocolate powder or syrup gives it a rich and creamy flavor and cuts the acidity of the espresso.",
-3.10,True,8),
+3.10,True,74),
 ("Iced Coffee","Often, different flavoring syrups will be added per the preference of the customer. You can even top it off with some cold foam.",
-2.50,True,9)
+2.50,True,84)
 ;
 """
 #insert query for Ingredients
@@ -92,44 +93,42 @@ insert into Ingredients(Ingredient_name,Unit_price) values
 ("chocolate box", 3.00),
 ("sugar packet",0.01);
 """
-
 #insert query for Staff
 insert_query = """
 insert into Staff(Schedule_id,First_name,Last_name,Email,Phone,Job_title) values
-(1,"Kevin","Chad","k873492@gmail.com","4085447779","Employee"),
-(2,"Dan","Le","dandog@gmail.com","4085469779","Employee"),
-(3,"Kog","Big","bbdacog@gmail.com","4090469779","Janitor"),
-(3,"Holly","Steward","whiteffdsa@gmail.com","4080468889","Cashier"),
-(1,"Mary","Garcia","dfadsmexdkjaf@gmail.com","4090400079","Manager"),
-(2,"Heather","Big","bbdacog@gmail.com","4090469779","Janitor"),
-(3,"Showee","Small","bshawdee@gmail.com","4080469999","Barista")
+(4,"Kevin","Chad","k873492@gmail.com","4085447779","Employee"),
+(14,"Dan","Le","dandog@gmail.com","4085469779","Employee"),
+(54,"Kog","Big","bbdacog@gmail.com","4090469779","Janitor"),
+(64,"Holly","Steward","whiteffdsa@gmail.com","4080468889","Cashier"),
+(44,"Mary","Garcia","dfadsmexdkjaf@gmail.com","4090400079","Manager"),
+(24,"Heather","Big","bbdacog@gmail.com","4090469779","Janitor"),
+(34,"Showee","Small","bshawdee@gmail.com","4080469999","Barista")
 """
-
 #insert query for inventory
 insert_query = """
 insert into inventory(Location,Quantity,Product_id) values
-("ShelfA",10,1),
-("ShelfB",10,50),
-("ShelfC",5,51),
-("FridgeA",4,52),
-("FridgeB",5,53),
-("FridgeC",6,54),
-("FridgeA",7,55),
-("FridgeA",2,56)
+("ShelfA",10,84),
+("ShelfB",10,94),
+("ShelfC",5,104),
+("FridgeA",4,114),
+("FridgeB",5,124),
+("FridgeC",6,134),
+("FridgeA",7,144),
+("FridgeA",2,154)
 """
 
 #inesrt query for orders
 insert_query = """
 insert into Orders(Order_date,Total_price,Quantity,Payment_method,Customer_id,Product_id) values
-("2022-10-20",8,2,"cash",2,1),
-("2022-10-21",4,2,"apple pay",1,51),
-("2022-11-22",9,2,"card",3,51),
-("2022-10-21",8,2,"cash",4,1),
-("2022-12-19",10,2,"apple pay",5,56),
-("2022-11-21",8,2,"card",6,54),
-("2022-10-23",5,2,"cash",2,1),
-("2022-10-22",8,2,"cash",1,53),
-("2022-01-21",11,2,"card",3,55)
+("2022-10-20",8,2,"cash",4,84),
+("2022-10-21",4,2,"apple pay",14,94),
+("2022-11-22",9,2,"card",24,104),
+("2022-10-21",8,2,"cash",34,114),
+("2022-12-19",10,2,"apple pay",44,124),
+("2022-11-21",8,2,"card",54,134),
+("2022-10-23",5,2,"cash",64,144),
+("2022-10-22",8,2,"cash",74,154),
+("2022-01-21",11,2,"card",44,114)
 """
 
-DBManager.execute_query(db_connection,insert_query)
+#DBManager.execute_queries(db_connection,insert_query)
